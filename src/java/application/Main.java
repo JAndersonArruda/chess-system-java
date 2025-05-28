@@ -4,7 +4,9 @@ import entities.boardgame.Board;
 import entities.chess.ChessMatch;
 import entities.chess.ChessPiece;
 import entities.chess.ChessPosition;
+import exceptions.ChessException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,16 +15,22 @@ public class Main {
         ChessMatch chessMatch = new ChessMatch();
 
         while (true) {
-            UI.printBoard(chessMatch.getPieces());
-            System.out.println();
-            System.out.print("Source: ");
-            ChessPosition source = UI.readChessPosition(scan);
+            try {
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces());
+                System.out.println();
+                System.out.print("Source: ");
+                ChessPosition source = UI.readChessPosition(scan);
 
-            System.out.println();
-            System.out.print("Target: ");
-            ChessPosition target = UI.readChessPosition(scan);
+                System.out.println();
+                System.out.print("Target: ");
+                ChessPosition target = UI.readChessPosition(scan);
 
-            ChessPiece capturePiece =  chessMatch.performeChessMove(source, target);
+                ChessPiece capturePiece = chessMatch.performeChessMove(source, target);
+            } catch (ChessException | InputMismatchException e) {
+                System.out.println(e.getMessage());
+                scan.nextLine();
+            }
         }
     }
 }
