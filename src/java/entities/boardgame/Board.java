@@ -1,6 +1,5 @@
 package entities.boardgame;
 
-import entities.chess.ChessPiece;
 import exceptions.BoardException;
 
 public class Board {

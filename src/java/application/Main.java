@@ -1,6 +1,5 @@
 package application;
 
-import entities.boardgame.Board;
 import entities.chess.ChessMatch;
 import entities.chess.ChessPiece;
 import entities.chess.ChessPosition;
